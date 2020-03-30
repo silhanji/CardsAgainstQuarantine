@@ -9,7 +9,6 @@ namespace CAH.Hubs
     {
         public async Task JoinGame(string playerName, string gameId)
         {
-            Console.WriteLine("JOIN: " + playerName + " " + gameId);
             if (string.IsNullOrWhiteSpace(playerName) || string.IsNullOrWhiteSpace(gameId))
                 return;
             
@@ -35,7 +34,7 @@ namespace CAH.Hubs
             var player = new Player(playerName);
             string gameId = await Task.Run(() => gamesManager.CreateNewGame(player));
             await Groups.AddToGroupAsync(Context.ConnectionId, gameId);
-            await Clients.All.SendAsync("JoinGame", player.Id, gameId);
+            await Clients.Caller.SendAsync("JoinGame", player.Id, gameId);
         }
     }
 }
