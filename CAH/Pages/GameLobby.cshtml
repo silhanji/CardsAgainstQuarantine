@@ -1,0 +1,34 @@
+@page
+@model CAH.Pages.GameLobby
+
+@if (Model.NewGame == null)
+{
+    <b>Some error occured, please try again!</b>
+    return;
+}
+
+<div id="lobby">
+    <div id="lobby-gameId">
+        @Model.NewGame.Id
+    </div>
+    <ul id="lobby-players">
+        @{
+            foreach (var playerStorage in Model.NewGame.Players)
+            {
+                <li>
+                    @playerStorage.Value.Name
+                </li>
+            }
+        }
+    </ul>
+
+    @if (Model.IsCreator)
+    {
+        <button id="lobby-start-game">
+            Start Game
+        </button>
+    }
+    
+</div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/lobbyHub.js"></script>

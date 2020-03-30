@@ -20,7 +20,6 @@ namespace CAH.Hubs
             {
                 var player = new Player(playerName);
                 game.AddPlayer(player);
-                await Groups.AddToGroupAsync(Context.ConnectionId, gameId);
                 await Clients.Caller.SendAsync("JoinGame", player.Id,gameId);
             }
         }
@@ -33,7 +32,6 @@ namespace CAH.Hubs
             var gamesManager = await Task.Run(GamesManager.GetGamesManager);
             var player = new Player(playerName);
             string gameId = await Task.Run(() => gamesManager.CreateNewGame(player));
-            await Groups.AddToGroupAsync(Context.ConnectionId, gameId);
             await Clients.Caller.SendAsync("JoinGame", player.Id, gameId);
         }
     }
