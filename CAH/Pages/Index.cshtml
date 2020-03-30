@@ -1,10 +1,17 @@
 ﻿@page
-@model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div id="main-site">
+    <form>
+        <input type="text" id="join-player-name" placeholder="Player Name" required/>
+        <input type="text" id="join-game-id" placeholder="Game Id" required/>
+        <input type="submit" id="join-submit" value="Join game"/>
+        <div id="main-error" style="display: none;">
+            Invalid game id, please try again!
+        </div>
+    </form>
+    <form>
+        <input type="text" id="create-player-name" placeholder="Player Name" required/>
+        <input type="submit" id="create-submit" value="Create new game"/>
+    </form>
 </div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/mainHub.js"></script>
