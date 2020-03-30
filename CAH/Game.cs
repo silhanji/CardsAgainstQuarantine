@@ -1,15 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace CAH
 {
     public class Game
     {
-        public CardDeck WhiteCards { get; }
-        public CardDeck BlackCards { get; }
+        public CardDeck<WhiteCard> WhiteCards { get; }
+        public CardDeck<BlackCard> BlackCards { get; }
         public Dictionary<int, Player> Players { get; private set; }
 
-        public Game(CardDeck whiteCards, CardDeck blackCards)
+        public Game(CardDeck<WhiteCard> whiteCards, CardDeck<BlackCard> blackCards)
         {
             WhiteCards = whiteCards;
             BlackCards = blackCards;
@@ -21,29 +22,76 @@ namespace CAH
         }
     }
 
-    public class Card
+    public abstract class Card
     {
         public int Id { get; }
         public string Text { get;  }
-        
+
         public Card(int id, string text)
         {
             Id = id;
             Text = text;
         }
-        
     }
 
-    public class CardDeck
+    public class WhiteCard : Card
     {
-        private List<Card> _cards;
+        public WhiteCard(int id, string text) : base(id, text)
+        {
+            
+        }
+        
+        public static WhiteCard ParseFromString(string s, int id)
+        {
+            return new WhiteCard(id, s);
+        }
+    }
+
+    public class BlackCard : Card
+    {
+        public int WhiteCardsNeeded { get; }
+        
+        public BlackCard(int id, string text, int whiteCardsNeeded) : base(id, text)
+        {
+            WhiteCardsNeeded = whiteCardsNeeded;
+        }
+
+        public new static BlackCard ParseFromString(string s, int id)
+        {
+            int whiteCardsNeeded = 0;
+            bool wasUnderscore = false;
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == '_')
+                {
+                    if (!wasUnderscore)
+                    {
+                        whiteCardsNeeded++;
+                    }
+                    wasUnderscore = true;
+                }
+                else
+                {
+                    wasUnderscore = false;
+                }
+            }
+
+            if (whiteCardsNeeded == 0) whiteCardsNeeded = 1; // At least one white card is always needed
+            
+            return new BlackCard(id, s, whiteCardsNeeded);
+        }
+    }
+
+    public class CardDeck<T> where T : Card
+    {
+        private List<T> _cards;
         private int index;
         
-        public CardDeck(IReadOnlyCollection<Card> cards)
+        public CardDeck(IReadOnlyCollection<T> cards)
         {
             if(cards == null || cards.Count == 0)
                 throw new ArgumentException("Deck must contain at least one card");
-            _cards = new List<Card>(cards);
+            _cards = new List<T>(cards);
             index = 0;
         }
 
@@ -55,15 +103,15 @@ namespace CAH
             {
                 int index1 = random.Next(0, _cards.Count);
                 int index2 = random.Next(0, _cards.Count);
-                Card tmp = _cards[index1];
+                T tmp = _cards[index1];
                 _cards[index1] = _cards[index2];
                 _cards[index2] = tmp;
             }
         }
         
-        public Card DrawCard()
+        public T DrawCard()
         {
-            Card tmp = _cards[index];
+            T tmp = _cards[index];
             index++;
             if (_cards.Count == index)
             {
@@ -72,6 +120,22 @@ namespace CAH
             }
 
             return tmp;
+        }
+
+        public static CardDeck<T> ParseFromFile(string filename, Func<string, int, T> cardParser)
+        {
+            StreamReader reader = new StreamReader(filename);
+            
+            List<T> parsedCards = new List<T>();
+            string line;
+            int id = 0;
+            while ((line = reader.ReadLine()) != null)
+            {
+                parsedCards.Add(cardParser(line, id));
+                id++;
+            }
+
+            return new CardDeck<T>(parsedCards);
         }
     }
     
@@ -89,7 +153,7 @@ namespace CAH
             Hand = new List<Card>();
         }
 
-        public void DrawCard(CardDeck cardDeck)
+        public void DrawCard(CardDeck<WhiteCard> cardDeck)
         {
             if(Hand.Count >= 10)
                 throw new InvalidOperationException("Can't draw more than 10 cards");
@@ -97,4 +161,5 @@ namespace CAH
             Hand.Add(cardDeck.DrawCard());
         }
     }
+    
 }
