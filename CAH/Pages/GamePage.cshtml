@@ -1,0 +1,64 @@
+@page
+@model CAH.Pages.GamePage
+
+@if (Model.CurrentGame == null)
+{
+    <b>Some error occured, please try again!</b>
+    return;
+}
+<div id="wrapper">
+    <div id="players">
+        
+    </div>
+    <div id="table-black">
+        <div class="card black">
+            
+        </div>
+    </div>
+    <div id="table-white">
+        
+    </div>
+    <div id="player-hand">
+        <div class="card white"> 
+             
+        </div>
+        <div class="card white"> 
+             
+        </div>
+        <div class="card white"> 
+             
+        </div>
+        <div class="card white"> 
+             
+        </div>
+        <div class="card white"> 
+            
+        </div>
+        <div class="card white"> 
+            
+        </div>
+        <div class="card white"> 
+            
+        </div>
+        <div class="card white"> 
+             
+        </div>
+        <div class="card white"> 
+            
+        </div>
+        <div class="card white"> 
+            
+        </div>
+    </div>
+    <div id="player-actions">
+        <button id="player-action-play-card">
+            Play Selected
+        </button>
+        <button id="player-action-give-points">
+            Give Points
+        </button>
+    </div>
+ </div>
+ <script src="~/js/game.js"></script>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/gameHub.js"></script>

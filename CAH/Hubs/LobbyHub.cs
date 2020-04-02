@@ -20,6 +20,8 @@ namespace CAH.Hubs
             if (game.Owner.Id != id)
                 return; //TODO: Some error notification
 
+            game.Start();
+            
             await Clients.Group(gameId).SendAsync("StartGame");
         }
 

@@ -16,13 +16,5 @@ namespace CAH.GameLogic
             Id = name.GetHashCode(); //TODO: Change to something bullet proof
             Hand = new List<Card>();
         }
-
-        public void DrawCard(CardDeck<WhiteCard> cardDeck)
-        {
-            if(Hand.Count >= 10)
-                throw new InvalidOperationException("Can't draw more than 10 cards");
-            
-            Hand.Add(cardDeck.DrawCard());
-        }
     }
 }

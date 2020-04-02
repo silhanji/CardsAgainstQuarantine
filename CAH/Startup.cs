@@ -54,6 +54,7 @@ namespace CAH
                 endpoints.MapRazorPages();
                 endpoints.MapHub<MainHub>("/mainHub");
                 endpoints.MapHub<LobbyHub>("/lobbyHub");
+                endpoints.MapHub<GameHub>("/gameHub");
             });
         }
     }

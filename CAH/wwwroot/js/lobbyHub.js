@@ -10,11 +10,10 @@ connection.on("PlayerJoined", function(playerName) {
 });
 
 connection.on("StartGame", function() {
-    window.location.href = "/Game";
+    window.location.href = "/GamePage";
 });
 
 connection.start().then(function() {
-   console.log("CONNECTION STARTED");
    connection.invoke("PlayerJoined", getCookie("game-id"), getCookie("player-id")).catch(function(err){
        console.error(err.toString());
    });
