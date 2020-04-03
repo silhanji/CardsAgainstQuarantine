@@ -1,0 +1,48 @@
+/* File containing styles for elements used across the page */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+a {
+    color: #ef0000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    background-color: #ef0000;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 8px solid #7f0000;
+    cursor: pointer;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 8px;
+}
+
+button:hover {
+    position: relative;
+    top: 2px;
+    border-bottom: 6px solid #7f0000;
+}
+
+button:active {
+    position: relative;
+    top: 8px;
+    border-bottom: none;
+}
+
+.info {
+    padding: 8px;
+    font-style: italic;
+    color: #ddd
+}

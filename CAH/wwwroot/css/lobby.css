@@ -1,0 +1,48 @@
+/* File containing styles for the lobby page */
+
+#lobby {
+    background-color: #151515;
+    width: 100%;
+    height: 100vh;
+    color: white;
+}
+
+#lobby * {
+    width: 100%;
+    max-width: 720px;
+    margin: auto
+}
+
+#lobby-gameId {
+    padding-top: 64px;
+    font-weight: bold;
+}
+
+#lobby-gameId-id {
+    color: #ef0000;
+}
+
+#lobby-players-header {
+    margin-top: 64px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+#lobby-players {
+    padding-left: 128px;
+    list-style: none;
+}
+
+#lobby-players li::before {
+    color: #ef0000;
+    content: "\25B6";
+    margin-right: 2px;
+    font-size: x-small;
+    vertical-align: middle;
+}
+
+#lobby-start-game {
+    max-width: 256px;
+    display: block;
+    margin-top: 64px;
+}

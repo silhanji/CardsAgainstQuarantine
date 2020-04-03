@@ -1,0 +1,75 @@
+/* File containing styles for the main page */
+
+#main-site {
+    background-color: #151515;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+#main-site h1 {
+    text-align: center;
+    margin: 0;
+    padding: 64px 0;
+    color: white;
+    font-size: xx-large;
+}
+
+#main-site .info {
+    max-width: 720px;
+    margin: auto;
+    padding: 8px;
+    font-style: italic;
+    color: #ddd
+}
+
+#main-site-forms {
+    width: 100%;
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: space-evenly;
+}
+
+#main-site-forms form {
+    width: 100%;
+    max-width: 320px;
+    margin: 32px;
+}
+
+#main-site-forms input {
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+#main-site-forms input[type="text"] {
+    border: none;
+}
+
+#main-site-forms input[type="submit"] {
+    background-color: #ef0000;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 8px solid #7f0000;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+#main-site-forms input[type="submit"]:hover {
+    position: relative;
+    top: 2px;
+    border-bottom: 6px solid #7f0000;
+}
+
+#main-site-forms input[type="submit"]:active {
+    position: relative;
+    top: 8px;
+    border-bottom: none;
+}

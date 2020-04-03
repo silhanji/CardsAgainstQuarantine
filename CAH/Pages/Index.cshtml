@@ -1,17 +1,29 @@
 ﻿@page
+@{
+    ViewData["Title"] = "Cards Against Quarantine";
+}
+
 <div id="main-site">
-    <form>
-        <input type="text" id="join-player-name" placeholder="Player Name" required/>
-        <input type="text" id="join-game-id" placeholder="Game Id" required/>
-        <input type="submit" id="join-submit" value="Join game"/>
-        <div id="main-error" style="display: none;">
-            Invalid game id, please try again!
-        </div>
-    </form>
-    <form>
-        <input type="text" id="create-player-name" placeholder="Player Name" required/>
-        <input type="submit" id="create-submit" value="Create new game"/>
-    </form>
+    
+    <h1>Cards Against Quarantine</h1>
+    <div class="info">
+        This is a <a href="https://www.cardsagainsthumanity.com/">Cards Against Humanity</a> clone, which was hacked
+        together during the Coronavirus quarantine. Some cards were removed and some were added, you have been warned!
+    </div>
+    <div id="main-site-forms">
+        <form>
+            <input type="text" id="join-player-name" placeholder="Player Name" required/>
+            <input type="text" id="join-game-id" placeholder="Game Id" required/>
+            <input type="submit" id="join-submit" value="Join game"/>
+            <div id="main-error" style="display: none;">
+                Invalid game id, please try again!
+            </div>
+        </form>
+        <form>
+            <input type="text" id="create-player-name" placeholder="Player Name" required/>
+            <input type="submit" id="create-submit" value="Create new game"/>
+        </form>
+    </div>
 </div>
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/mainHub.js"></script>

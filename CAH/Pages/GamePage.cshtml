@@ -1,6 +1,8 @@
 @page
 @model CAH.Pages.GamePage
-
+@{
+    ViewData["Title"] = "Cards Against Quarantine";
+}
 @if (Model.CurrentGame == null)
 {
     <b>Some error occured, please try again!</b>
