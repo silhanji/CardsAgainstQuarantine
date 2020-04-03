@@ -8,7 +8,7 @@
     <b>Some error occured, please try again!</b>
     return;
 }
-<div id="wrapper">
+<div id="game">
     <div id="players">
         
     </div>
@@ -17,9 +17,20 @@
             
         </div>
     </div>
-    <div id="table-white">
-        
+    <div id="table-right">
+        <div id="table-white">
+                
+        </div>
+        <div id="player-actions">
+            <button id="player-action-play-card">
+                Play Selected
+            </button>
+            <button id="player-action-give-points">
+                Give Points
+            </button>
+        </div>
     </div>
+    
     <div id="player-hand">
         <div class="card white"> 
              
@@ -52,15 +63,7 @@
             
         </div>
     </div>
-    <div id="player-actions">
-        <button id="player-action-play-card">
-            Play Selected
-        </button>
-        <button id="player-action-give-points">
-            Give Points
-        </button>
-    </div>
- </div>
+</div>
  <script src="~/js/game.js"></script>
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/gameHub.js"></script>
