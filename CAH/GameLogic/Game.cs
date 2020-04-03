@@ -83,6 +83,9 @@ namespace CAH.GameLogic
             if(_cardsOnTheTable.ContainsKey(playerId))
                 throw new ArgumentException("Player with provided ID already played this turn");
             
+            if(CurrentCzar.Id == playerId)
+                throw new ArgumentException("Czar can not play white cards");
+            
             List<int> cardIndices = new List<int>();
             foreach(int cardId in cardIds)
             {

@@ -174,6 +174,8 @@ function revealCards(card) {
     for(var i = 0; i < cards.length; i++) {
         var clone = cards[i].cloneNode(true);
         clone.innerHTML = cards[i].cardText;
+        if(clone.classList.contains("reverse"))
+            clone.classList.remove("reverse");
         wrapper.replaceChild(clone, cards[i]);
     }
 }
@@ -203,7 +205,7 @@ function addCardsOnTable(count) {
         var card = document.createElement("div");
         //card.cardText = arguments[i];
         card.classList.add("card", "white", "reverse");
-        card.textContent = "Cards Against Humanity";
+        card.textContent = "Cards Against Quarantine";
         card.style.zIndex = (count - i);
         if(i > 0) {
             card.style.position = "absolute";
