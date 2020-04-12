@@ -4,8 +4,8 @@ Against Humanity online with friends, when it is not possible to play them in pe
 everything available in original game and it's expansion packs, nor to fully replace it. **Support the original game
 developers by buing the physical copy of the game if you enjoy it.**
 
-*Most cards used in the repository are taken from the PDF, downloadable at the Cards Against Humanity page. Some were however
-removed and some were added to accommodate my personal humor.*
+*Most cards used in the repository are taken from the PDF, downloadable at the Cards Against Humanity page (distributed under
+Creative Commons license). Some were however removed and some were added to accommodate my personal humor.*
 
 ## Deployment
 This project uses ASP.NET Core with Razor pages and SignalR. It should be ready as is to be deployed on any website running 
