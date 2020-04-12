@@ -1,0 +1,45 @@
+@page
+@model CardsAgainstQuarantine.Pages.GameLobby
+@{
+    ViewData["Title"] = "Cards Against Quarantine";
+}
+@if (Model.NewGame == null)
+{
+    <b>Some error occured, please try again!</b>
+    return;
+}
+
+<div id="lobby">
+    <div id="lobby-gameId">
+        Game ID: <span id="lobby-gameId-id">@Model.NewGame.Id</span>
+        
+    </div>
+    <div class="info">Give this ID to your friends and they will be able to connect.</div>
+    <div id="lobby-players-header">Players online:</div>
+    <ul id="lobby-players">
+        @{
+            foreach (var playerStorage in Model.NewGame.Players)
+            {
+                <li>
+                    @playerStorage.Value.Name
+                </li>
+            }
+        }
+    </ul>
+
+    @{
+        if (Model.IsCreator)
+        {
+            <button id="lobby-start-game">
+                Start Game
+            </button>
+        }
+        else
+        {
+            <div class="info">Please wait until the game starts.</div>
+        }
+    }
+
+</div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/lobbyHub.js"></script>
